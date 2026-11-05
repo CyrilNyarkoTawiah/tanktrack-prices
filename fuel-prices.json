@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "effectiveDate": "2026-11-05",
+  "source": "TankTrack price pipeline (goil.com.gh, myjoyonline.com, npa.gov.gh)",
+  "currency": "GHS",
+  "unit": "per_litre",
+  "example": false,
+  "prices": [
+    {
+      "omc": "GOIL",
+      "petrol": 16.64,
+      "diesel": 18.46,
+      "premium": 18.99,
+      "asOf": "2026-09-17"
+    },
+    {
+      "omc": "Star Oil",
+      "petrol": 16.45,
+      "diesel": null,
+      "premium": null,
+      "asOf": "2026-11-05"
+    }
+  ]
+}

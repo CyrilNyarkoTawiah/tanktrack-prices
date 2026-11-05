@@ -1,0 +1,25 @@
+name: Update fuel prices
+
+on:
+  schedule:
+    - cron: "0 8 1,16,20 * *" # 1st, 16th and 20th, 08:00 UTC (Ghana morning) - pricing windows open on the 1st and 16th; the 20th catches late announcers
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scraper.py
+      - name: Commit if changed
+        run: |
+          git config user.name "tanktrack-prices-bot"
+          git config user.email "10352940@upsamail.edu.gh"
+          git add -A
+          git diff --cached --quiet || (git commit -m "Prices update $(date -u +%Y-%m-%dT%H:%MZ)" && git push)
